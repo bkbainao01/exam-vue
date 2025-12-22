@@ -1,8 +1,6 @@
 <script setup>
 import moment from "moment";
 import { reactive, ref } from "vue";
-import { VueDatePicker } from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
 
 const rooms = reactive([
   {
