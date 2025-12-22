@@ -1,7 +1,12 @@
 <script setup>
 import moment from "moment";
 import { reactive, ref } from "vue";
-
+/*
+บริษัทแห่งนึงมี เวลาทำงาน 09:00-18:00 เวลาพัก 12:00-13:00 มีห้องประชุมให้ใช้ 2 ห้อง แบ่งเป็นห้อง A และ B มีตารางจองแล้วดังนี้
+A: มีจอง 09:00-10:00, 14:00-15:00
+B: มีจอง 10:00-12:00, 16:00-18:00
+อยากให้ทำ function จองห้องประชุม โดยส่ง เวลาที่เริ่มต้น-สิ้นสุด และตอบกลับว่ามีห้องไหนว่างเวลาดังกล่าวบ้าง
+*/
 const rooms = reactive([
   {
     name: "A",
@@ -63,7 +68,7 @@ function checkBooked(d, ts, te) {
     return;
   }
 
-  if (startMn <= breakEndMn && endMn >= breakStartMn) {
+  if (startMn < breakEndMn && endMn > breakStartMn) {
     error.value = "ตรงกับเวลาพัก (12:00 - 13:00)";
     return;
   }
